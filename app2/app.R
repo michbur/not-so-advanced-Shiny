@@ -1,4 +1,5 @@
 library(shiny)
+library(shinyjss)
 
 ui <- fluidPage(
   shinyjs::useShinyjs(),
