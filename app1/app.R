@@ -2,6 +2,14 @@ library(shiny)
 
 ui <- fluidPage(
     
+    tags$head(
+        tags$style(HTML("
+      .shiny-text-output {
+        color: red;
+        font-size: 30px;
+      }"))
+    ),
+    
     plotOutput("first_plot"),
     textOutput("first_print")
     
