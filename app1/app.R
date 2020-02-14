@@ -10,6 +10,11 @@ ui <- fluidPage(
       }"))
     ),
     
+    numericInput(inputId = "provided_number", 
+                 label = "Provide number",
+                 min = 2,
+                 max = 20,
+                 value = 5),
     plotOutput("first_plot"),
     textOutput("first_print"),
     textOutput("second_print")
@@ -19,7 +24,7 @@ ui <- fluidPage(
 server <- function(input, output) {
     
     output[["first_plot"]] <- renderPlot({
-        plot(1L:10)
+        plot(1L:input[["provided_number"]])
     })
     
     output[["first_print"]] <- renderText({
