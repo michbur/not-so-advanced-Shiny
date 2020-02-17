@@ -42,7 +42,7 @@ server <- function(input, output) {
     #   browser()
     validate(need(input[["input_df"]], message = "Provide data file"))
     
-    table(rv[["df"]][[which(sapply(rv[["df"]], is.character))]])
+    table(rv[["df"]][, which(!sapply(rv[["df"]], is.numeric))])
   })
 }
 
