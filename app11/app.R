@@ -25,7 +25,7 @@ server <- function(input, output) {
     i <- info[["row"]]
     j <- info[["col"]]
     v <- info[["value"]]
-    rv[["df"]][i, j] <<- DT::coerceValue(v, rv[["df"]][i, j])
+    rv[["df"]][i, j] <- DT::coerceValue(v, rv[["df"]][i, j])
     replaceData(proxy, rv[["df"]], resetPaging = FALSE)  
   })
   
@@ -41,7 +41,8 @@ server <- function(input, output) {
     # if(!is.null(input[["input_df"]])) 
     #   browser()
     validate(need(input[["input_df"]], message = "Provide data file"))
-    table(rv[["df"]][["variety"]])
+    
+    table(rv[["df"]][[which(sapply(rv[["df"]], is.character))]])
   })
 }
 
