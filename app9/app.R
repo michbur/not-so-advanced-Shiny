@@ -21,7 +21,13 @@ server <- function(input, output) {
     
     #https://rstudio.github.io/DT/shiny.html
     output[["filtered_rows"]] <- renderTable({
-      df()[input[["output_df_rows_all"]], ]
+      # if(!is.null(input[["input_df"]])) 
+      #   browser()
+      
+      medians <- sapply(df()[input[["output_df_rows_all"]], 
+                              sapply(df(), is.numeric)], median)
+      
+      data.frame(t(medians))
     })
 }
 
