@@ -33,7 +33,10 @@ server <- function(input, output) {
            actionButton(inputId = "submit_sequence_area", 
                         label = "Submit sequences from the field above"))
     } else {
-      textOutput("first_print")
+      list(
+        textOutput("first_print"),
+        tags$p(HTML("<h3><A HREF=\"javascript:history.go(0)\">Start a new query</A></h3>"))
+      )
     }
   })
   
